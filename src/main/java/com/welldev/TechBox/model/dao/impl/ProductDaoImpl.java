@@ -37,7 +37,6 @@ public class ProductDaoImpl implements ProductDao {
 
     //update product
     public Product updateProduct(int productId, ProductUpdateRequestDto productUpdateRequestDto) {
-
         Session session = HibernateUtils.getSessionFactory().openSession();
         Product productToUpdate = session.get(Product.class, productId);
         productToUpdate.setName(productUpdateRequestDto.getName());

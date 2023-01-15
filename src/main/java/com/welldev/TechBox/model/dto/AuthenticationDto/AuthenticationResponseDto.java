@@ -1,15 +1,21 @@
 package com.welldev.TechBox.model.dto.AuthenticationDto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
-@Builder
+
 @AllArgsConstructor
-@NoArgsConstructor
+@Setter
+@Getter
+@Builder
 public class AuthenticationResponseDto {
     private  String accessToken;
     private String refreshToken;
+
+    private int id;
+    private String firstname;
+    private String lastname;
+    private String email;
+    private int mobilenumber;
+    private String usertype;
+
 }

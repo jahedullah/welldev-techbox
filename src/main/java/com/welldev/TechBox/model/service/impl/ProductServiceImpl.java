@@ -48,8 +48,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductRegisterResponseDto addProduct(ProductRegisterRequestDto productRegisterRequestDto) {
-//        ArrayList<String> productNameList = productDao.findAllProductName();
-//        if (!productNameList.contains(productRegisterRequestDto.getName())) {
             Product productToCreate = new Product(
                     productRegisterRequestDto.getName(),
                     productRegisterRequestDto.getDescription(),

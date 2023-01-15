@@ -19,7 +19,6 @@ public interface ProductDao {
 
     Product deleteProduct(int pid);
 
-//    ProductUpdateResponseDto getProduct(int productId);
     Product getProduct(int productId);
 
     Product updateProduct(int productId, ProductUpdateRequestDto productUpdateRequestDto);

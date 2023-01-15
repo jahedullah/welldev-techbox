@@ -1,4 +1,4 @@
-package com.welldev.TechBox.model.dto.UserRegisterDto;
+package com.welldev.TechBox.model.dto.UserDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,7 +14,7 @@ public class UserRegisterRequestDto {
     private String lastname;
     private String email;
     private String password;
-    private Integer mobilenumber;
+    private int mobilenumber;
     private String usertype;
 
 }

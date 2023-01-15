@@ -13,21 +13,19 @@ import java.util.List;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "user")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private int id;
     private String firstname;
     private String lastname;
     private String email;
     private String password;
-    private Integer mobilenumber;
+    private int mobilenumber;
     private String usertype;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_prod_join",
