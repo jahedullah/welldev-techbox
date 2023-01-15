@@ -11,12 +11,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @RestController
+@RequestMapping
 @RequiredArgsConstructor
 public class AuthenticationController {
 
@@ -40,9 +42,8 @@ public class AuthenticationController {
 
     @PostMapping(AUTH_URL.AUTHENTICATE)
     public ResponseEntity<AuthenticationResponseDto> authenticate(
-            @RequestBody AuthenticationRequestDto request,
-            HttpServletResponse response
+            @RequestBody AuthenticationRequestDto request
     ) {
-        return ResponseEntity.ok(authService.authenticate(request, response));
+        return ResponseEntity.ok(authService.authenticate(request));
     }
 }

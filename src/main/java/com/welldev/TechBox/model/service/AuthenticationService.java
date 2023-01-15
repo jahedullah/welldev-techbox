@@ -71,7 +71,7 @@ public class AuthenticationService {
                 user.getUsertype());
     }
 
-    public AuthenticationResponseDto authenticate(AuthenticationRequestDto request, HttpServletResponse response) {
+    public AuthenticationResponseDto authenticate(AuthenticationRequestDto request) {
         var user = userDao.findByEmail(request.getEmail());
         authManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -80,15 +80,15 @@ public class AuthenticationService {
                 )
         );
         var jwtAccessToken = jwtService.generateAccessToken(user);
-        var jwtRefreshToken = jwtService.generateRefreshToken(user);
-
-        // Adding these two token into response header.
-        response.setHeader("AccessToken", jwtAccessToken);
-        response.setHeader("RefreshToken", jwtRefreshToken);
-        return AuthenticationResponseDto.builder()
-                .accessToken(jwtAccessToken)
-                .refreshToken(jwtRefreshToken)
-                .build();
+        return new AuthenticationResponseDto(
+                jwtAccessToken,
+                user.getId(),
+                user.getFirstname(),
+                user.getLastname(),
+                user.getEmail(),
+                user.getMobilenumber(),
+                user.getUsertype()
+        );
 
     }
 }
