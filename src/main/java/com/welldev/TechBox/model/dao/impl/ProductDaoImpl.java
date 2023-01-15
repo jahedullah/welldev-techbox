@@ -3,8 +3,6 @@ package com.welldev.TechBox.model.dao.impl;
 
 import com.welldev.TechBox.model.dao.ProductDao;
 import com.welldev.TechBox.model.dto.Product.ProductDto;
-import com.welldev.TechBox.model.dto.Product.ProductRegisterRequestDto;
-import com.welldev.TechBox.model.dto.Product.ProductRegisterResponseDto;
 import com.welldev.TechBox.model.dto.Product.ProductUpdateRequestDto;
 import com.welldev.TechBox.model.entity.Product;
 import com.welldev.TechBox.model.entity.User;
@@ -130,7 +128,7 @@ public class ProductDaoImpl implements ProductDao {
         session.close();
     }
 
-    public List findAllProductName() {
+    public ArrayList<String> findAllProductName() {
         Session session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
         String query = "select name from Product";

@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 
@@ -41,7 +42,8 @@ public class ProductController {
     public ResponseEntity<ProductRegisterResponseDto>
     addProduct(@Valid @RequestBody
                ProductRegisterRequestDto productRegisterRequestDto) {
-        return ResponseEntity.ok(productService.addProduct(productRegisterRequestDto));
+            return ResponseEntity.ok(productService.addProduct(productRegisterRequestDto));
+
     }
 
 
@@ -49,13 +51,11 @@ public class ProductController {
     public ResponseEntity<ProductDto>
     updateProduct(@Valid @PathVariable int productId,
                   @Valid @RequestBody ProductUpdateRequestDto productUpdateRequestDto) throws NullPointerException {
-        try {
+
             ProductDto productDto =
                     productService.updateProduct(productId, productUpdateRequestDto);
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(productDto);
-        } catch (NullPointerException nullPointerException) {
-            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).build();
-        }
+
     }
 
 

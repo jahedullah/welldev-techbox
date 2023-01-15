@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,8 +48,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductRegisterResponseDto addProduct(ProductRegisterRequestDto productRegisterRequestDto) {
-        List<Product> productNameList = productDao.findAllProductName();
-        if (!productNameList.contains(productRegisterRequestDto.getName())) {
+//        ArrayList<String> productNameList = productDao.findAllProductName();
+//        if (!productNameList.contains(productRegisterRequestDto.getName())) {
             Product productToCreate = new Product(
                     productRegisterRequestDto.getName(),
                     productRegisterRequestDto.getDescription(),
@@ -63,9 +64,6 @@ public class ProductServiceImpl implements ProductService {
                     product.getPrice(),
                     product.getProductCount()
             );
-        }else {
-            return new ProductRegisterResponseDto();
-        }
     }
 
 
